@@ -5,6 +5,9 @@ const authorName = document.querySelector('#author');
 const bookTitle = document.querySelector('#title');
 const bookPages = document.querySelector('#pages');
 const hasReadInput = document.querySelector('#hasRead');
+const openModalButton = document.querySelector('#addBookModal');
+const modal = document.querySelector('#modal');
+const closeModalButton = document.querySelector('#closeModal');
 
 let isValid = false;
 
@@ -63,6 +66,15 @@ addBookButton.addEventListener('click', (e) => {
     return;
   }
   updateLibrary(authorName.value, bookTitle.value, +bookPages.value, checkRead);
+  modal.close();
   resetForm();
   console.log(library);
+});
+
+openModalButton.addEventListener('click', () => {
+  modal.showModal();
+});
+
+closeModalButton.addEventListener('click', () => {
+  modal.close();
 });

@@ -10,40 +10,43 @@
   </head>
   <body>
     <main class="main-container">
-      <section class="side-bar"></section>
       <section class="top-bar">
         <h1>Welcome to the library!</h1>
         <p>shhhh...</p>
       </section>
       <section class="book-section"></section>
-      <form>
-        <div class="book-author">
-          <label for="author">Author Name:</label>
-          <input type="text" id="author" />
-        </div>
-        <div class="book-title">
-          <label for="title">Book Title:</label>
-          <input type="text" id="title" />
-        </div>
-        <div class="book-pages">
-          <label for="pages">Number of pages:</label>
-          <input type="text" id="pages" />
-        </div>
-        <div class="book-has-read">
-          <fieldset>
-            <legend>Have you read this book?</legend>
-            <div>
-              <input type="radio" id="hasRead" name="drone" />
-              <label for="hasRead">Yes</label>
-            </div>
-            <div>
-              <input type="radio" id="hasNotRead" name="drone" checked />
-              <label for="hasNotRead">No</label>
-            </div>
-          </fieldset>
-        </div>
-        <button class="form-button" id="addBookButton">Add Book!</button>
-      </form>
+      <dialog id="modal">
+        <form>
+          <div class="book-author">
+            <label for="author">Author Name:</label>
+            <input type="text" id="author" />
+          </div>
+          <div class="book-title">
+            <label for="title">Book Title:</label>
+            <input type="text" id="title" />
+          </div>
+          <div class="book-pages">
+            <label for="pages">Number of pages:</label>
+            <input type="text" id="pages" />
+          </div>
+          <div class="book-has-read">
+            <fieldset>
+              <legend>Have you read this book?</legend>
+              <div>
+                <input type="radio" id="hasRead" name="drone" />
+                <label for="hasRead">Yes</label>
+              </div>
+              <div>
+                <input type="radio" id="hasNotRead" name="drone" checked />
+                <label for="hasNotRead">No</label>
+              </div>
+            </fieldset>
+          </div>
+          <button class="form-button" id="addBookButton">Add Book!</button>
+        </form>
+        <button id="closeModal">Close</button>
+      </dialog>
+      <button class="add-button" id="addBookModal">Add Book</button>
     </main>
   </body>
 </html>
