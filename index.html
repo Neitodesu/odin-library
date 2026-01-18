@@ -14,7 +14,25 @@
         <h1>Welcome to the library!</h1>
         <p>shhhh...</p>
       </section>
-      <section class="book-section"></section>
+      <section class="book-section">
+        <div class="book" id="template">
+          <img
+            src="./icons/book-(1).svg"
+            alt="Book cover"
+            class="book-img"
+            width="24px"
+          />
+          <h2 class="card-title-header" id="cardTitleHeader">Title:</h2>
+          <p class="card-title" id="cardTitle">Who Poo In My Shoe</p>
+          <h2 class="card-author-header" id="cardAuthorHeader">Author</h2>
+          <p class="card-author" id="cardAuthor">Dr. Poo Poo Head M.D.</p>
+          <h2 class="card-pages-header" id="cardPagesHeader">Pages</h2>
+          <p class="card-pages" id="<cardPages">357 pages</p>
+          <p>Has not read</p>
+          <button class="remove-card" id="removeCard">Remove Book</button>
+          <button class="card-has-read">Toggle Read</button>
+        </div>
+      </section>
       <dialog id="modal">
         <form>
           <div class="book-author">
@@ -46,7 +64,9 @@
         </form>
         <button id="closeModal">Close</button>
       </dialog>
-      <button class="add-button" id="addBookModal">Add Book</button>
+      <section class="add-book">
+        <button class="add-button" id="addBookModal">Add Book</button>
+      </section>
     </main>
   </body>
 </html>
