@@ -57,6 +57,7 @@ const validateForm = () => {
 
   isValid = true;
 };
+
 addBookButton.addEventListener('click', (e) => {
   e.preventDefault();
   const checkRead = true ? hasReadInput.checked : false;
