@@ -1,5 +1,11 @@
 # Odin Library
 
+[Live Link](https://neitodesu.github.io/odin-library/)
+
+![Screenshot](./icons/Screen1.png)
+
+## Project layout
+
 1. All books will be stored in an array
 2. Use constructor to create new books
 3. Use a function (outside of constructor) that will take arguments and create a book object, then store that book object into the library array
