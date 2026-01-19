@@ -1,5 +1,3 @@
-let library = [];
-
 const addBookButton = document.querySelector('#addBookButton');
 const authorName = document.querySelector('#author');
 const bookTitle = document.querySelector('#title');
@@ -8,8 +6,10 @@ const hasReadInput = document.querySelector('#hasRead');
 const openModalButton = document.querySelector('#addBookModal');
 const modal = document.querySelector('#modal');
 const closeModalButton = document.querySelector('#closeModal');
+const libraryContainer = document.querySelector('.book-section');
+const template = document.querySelector('#myTemplate');
 
-let isValid = false;
+let library = [];
 
 class Book {
   constructor(author, title, pages, hasRead, id) {
@@ -18,6 +18,10 @@ class Book {
     this.pages = pages;
     this.hasRead = hasRead;
     this.id = id;
+  }
+
+  toggleRead() {
+    this.hasRead = !this.hasRead;
   }
 }
 
@@ -32,44 +36,71 @@ const updateLibrary = (author, title, pages, hasRead) => {
   let newBook = createBook(author, title, pages, hasRead);
 
   library.push(newBook);
+  return newBook;
+};
+
+const validateForm = () => {
+  if (!authorName.value) {
+    return false;
+  }
+  if (!bookTitle.value) {
+    return false;
+  }
+  if (!bookPages.value) {
+    return false;
+  }
+  if (isNaN(bookPages.value)) {
+    return false;
+  }
+
+  return true;
 };
 
 const resetForm = () => {
   authorName.value = '';
   bookTitle.value = '';
   bookPages.value = '';
-  isValid = false;
 };
 
-const validateForm = () => {
-  if (authorName.value == '') {
-    return;
-  }
-  if (bookTitle.value == '') {
-    return;
-  }
-  if (bookPages.value == '') {
-    return;
-  }
-  if (bookPages.value != +bookPages.value) {
-    return;
-  }
+const displayBooks = (book) => {
+  const clone = template.content.cloneNode(true);
+  const card = clone.querySelector('.book');
 
-  isValid = true;
+  card.querySelector('.book-title').textContent = book.title;
+  card.querySelector('.book-author').textContent = book.author;
+  card.querySelector('.book-pages').textContent = `${book.pages} pages`;
+  card.querySelector('.has-read').textContent = book.hasRead ? 'Yes' : 'No';
+  libraryContainer.appendChild(card);
+  card.querySelector('.remove-book-btn').addEventListener('click', () => {
+    library = library.filter((prop) => prop.id != book.id);
+    card.remove();
+  });
+
+  card.querySelector('.toggle-read').addEventListener('click', () => {
+    book.toggleRead();
+    card.querySelector('.has-read').textContent = book.hasRead ? 'Yes' : 'No';
+  });
 };
 
 addBookButton.addEventListener('click', (e) => {
   e.preventDefault();
-  const checkRead = true ? hasReadInput.checked : false;
+  const checkRead = hasReadInput.checked;
 
-  validateForm();
-  if (!isValid) {
+  if (!validateForm()) {
     return;
   }
-  updateLibrary(authorName.value, bookTitle.value, +bookPages.value, checkRead);
+
+  const newBook = updateLibrary(
+    authorName.value,
+    bookTitle.value,
+    bookPages.value,
+    checkRead,
+  );
+  displayBooks(newBook);
+
   modal.close();
+
   resetForm();
-  console.log(library);
 });
 
 openModalButton.addEventListener('click', () => {
@@ -77,5 +108,6 @@ openModalButton.addEventListener('click', () => {
 });
 
 closeModalButton.addEventListener('click', () => {
+  resetForm();
   modal.close();
 });

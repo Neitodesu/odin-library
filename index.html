@@ -15,58 +15,58 @@
         <p>shhhh...</p>
       </section>
       <section class="book-section">
-        <div class="book" id="template">
-          <img
-            src="./icons/book-(1).svg"
-            alt="Book cover"
-            class="book-img"
-            width="32px"
-          />
-          <h2 class="card-header">Title:</h2>
-          <p class="card-title" id="cardTitle">Who Poo In My Shoe</p>
-          <h2 class="card-header">Author</h2>
-          <p class="card-author" id="cardAuthor">Dr. Poo Poo Head M.D.</p>
-          <h2 class="card-header">Pages</h2>
-          <p class="card-pages" id="<cardPages">357 pages</p>
-          <div class="card-border"></div>
-          <p id="cardRead">Has not read</p>
-          <button class="remove-card-btn" id="removeCard">Remove Book</button>
-          <button class="card-read">Toggle Read</button>
-        </div>
+        <template id="myTemplate">
+          <div class="book">
+            <div class="book-icon">📖</div>
+            <h2>Title</h2>
+            <p class="book-title"></p>
+            <h2>Author</h2>
+            <p class="book-author"></p>
+            <h2>Pages</h2>
+            <p class="book-pages"></p>
+            <h2>Have read</h2>
+            <p class="has-read"></p>
+            <div class="book-border"></div>
+            <button class="toggle-read">Toggle read</button>
+            <button class="remove-book-btn">Remove Book</button>
+          </div>
+        </template>
       </section>
       <dialog id="modal">
-        <form>
-          <div class="book-author">
-            <label for="author">Author Name:</label>
-            <input type="text" id="author" />
-          </div>
-          <div class="book-title">
-            <label for="title">Book Title:</label>
-            <input type="text" id="title" />
-          </div>
-          <div class="book-pages">
-            <label for="pages">Number of pages:</label>
-            <input type="text" id="pages" />
-          </div>
-          <div class="book-has-read">
-            <fieldset>
-              <legend>Have you read this book?</legend>
-              <div>
-                <input type="radio" id="hasRead" name="drone" />
-                <label for="hasRead">Yes</label>
-              </div>
-              <div>
-                <input type="radio" id="hasNotRead" name="drone" checked />
-                <label for="hasNotRead">No</label>
-              </div>
-            </fieldset>
-          </div>
-          <button class="form-button" id="addBookButton">Add Book!</button>
-        </form>
-        <button id="closeModal">Close</button>
+        <div class="modal-container">
+          <form>
+            <div class="form-author">
+              <label for="author">Author Name:</label>
+              <input type="text" id="author" />
+            </div>
+            <div class="form-title">
+              <label for="title">Book Title:</label>
+              <input type="text" id="title" />
+            </div>
+            <div class="form-pages">
+              <label for="pages">Number of pages:</label>
+              <input type="text" id="pages" />
+            </div>
+            <div class="form-has-read">
+              <fieldset>
+                <legend>Have you read this book?</legend>
+                <div>
+                  <input type="radio" id="hasRead" name="drone" />
+                  <label for="hasRead">Yes</label>
+                </div>
+                <div>
+                  <input type="radio" id="hasNotRead" name="drone" checked />
+                  <label for="hasNotRead">No</label>
+                </div>
+              </fieldset>
+            </div>
+            <button class="form-button" id="addBookButton">Add Book</button>
+          </form>
+          <button id="closeModal">Close</button>
+        </div>
       </dialog>
       <section class="add-book">
-        <button class="add-button" id="addBookModal">Add Book</button>
+        <button class="add-button" id="addBookModal">Add a book!</button>
       </section>
     </main>
   </body>
